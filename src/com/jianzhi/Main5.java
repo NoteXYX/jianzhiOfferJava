@@ -1,20 +1,36 @@
+//中序遍历的下一个节点
 package com.jianzhi;
-import java.util.Scanner;
-import java.util.Arrays;
 public class Main5 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNextLine()){
-            String str = sc.nextLine();
-            if (str.equals(""))
-                break;
-            System.out.println(str.lastIndexOf("a",3));
-            String[] strs = str.split(" ");
-            StringBuffer sbf = new StringBuffer();
-            for (int i=strs.length-1; i>=0; i--){
-                sbf.append(strs[i] + " ");
-            }
-            System.out.println(sbf.toString().trim());
+    public class TreeLinkNode {
+        int val;
+        TreeLinkNode left = null;
+        TreeLinkNode right = null;
+        TreeLinkNode next = null;
+        TreeLinkNode(int val) {
+            this.val = val;
         }
+    }
+    public TreeLinkNode GetNext(TreeLinkNode pNode) {
+        TreeLinkNode p = pNode;
+        if (p.right != null) {
+            p = p.right;
+            while (p.left != null) {
+                p = p.left;
+            }
+            return p;
+        }
+        if (p.next!=null && p==p.next.left) {
+            return p.next;
+        }
+        if (p.next != null) {
+            p = p.next;
+            while (p.next!=null && p==p.next.right) {
+                p = p.next;
+            }
+            return p.next;
+        }
+        return null;
+    }
+    public static void main(String[] args) {
     }
 }

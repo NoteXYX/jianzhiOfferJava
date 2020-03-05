@@ -21,16 +21,13 @@ public class Main3 {
         }
         return arrayList;
     }
-    public ArrayList<Integer> recurPrint(ListNode listNode){
-        ArrayList arrayList = new ArrayList();
-        recurCore(arrayList, listNode);
-        return arrayList;
-    }
-    public void recurCore(ArrayList arrayList, ListNode listNode){
-        if (listNode!=null){
-            recurCore(arrayList, listNode.next);
-            arrayList.add(listNode.val);
+    ArrayList<Integer> list = new ArrayList();
+    public ArrayList<Integer> recurPrintListFromTailToHead(ListNode listNode) { //递归实现
+        if(listNode!=null){
+            recurPrintListFromTailToHead(listNode.next);
+            list.add(listNode.val);
         }
+        return list;
     }
     public static void main(String[] args) {
         Main3 m = new Main3();
@@ -38,6 +35,6 @@ public class Main3 {
         node.creatNode(node, 2);
         node.creatNode(node, 3);
         node.creatNode(node, 4);
-        System.out.println(m.recurPrint(node).toString());
+        System.out.println(m.recurPrintListFromTailToHead(node).toString());
     }
 }
