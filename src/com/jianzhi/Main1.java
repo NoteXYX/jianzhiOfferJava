@@ -1,3 +1,4 @@
+//数组查找
 package com.jianzhi;
 public class Main1 {
     public boolean Find(int target, int[][] array) {
