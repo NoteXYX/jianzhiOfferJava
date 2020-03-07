@@ -1,12 +1,14 @@
 //从尾到头打印链表
 package com.jianzhi;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 public class Main3 {
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) { //用栈实现，非递归
-        ArrayList arrayList = new ArrayList();
+    public int[] printListFromTailToHead(ListNode listNode) { //用栈实现，非递归
+        ArrayList<Integer> arrayList = new ArrayList();
         if (listNode == null){
-            return arrayList;
+            int[] arr = arrayList.stream().mapToInt(Integer::intValue).toArray();
+            return arr;
         }
         Stack s = new Stack();
         ListNode node = listNode;
@@ -17,9 +19,10 @@ public class Main3 {
             s.push(node.val);
         }
         while (!s.empty()){
-            arrayList.add(s.pop());
+            arrayList.add((Integer) s.pop());
         }
-        return arrayList;
+        int[] arr = arrayList.stream().mapToInt(Integer::intValue).toArray();
+        return arr;
     }
     ArrayList<Integer> list = new ArrayList();
     public ArrayList<Integer> recurPrintListFromTailToHead(ListNode listNode) { //递归实现
@@ -35,6 +38,6 @@ public class Main3 {
         node.creatNode(node, 2);
         node.creatNode(node, 3);
         node.creatNode(node, 4);
-        System.out.println(m.recurPrintListFromTailToHead(node).toString());
+        System.out.println(Arrays.toString(m.printListFromTailToHead(node)));
     }
 }

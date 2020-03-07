@@ -2,6 +2,9 @@
 package com.jianzhi;
 public class Main1 {
     public boolean Find(int target, int[][] array) {
+        if (array == null || array.length == 0) {
+            return false;
+        }
         int line = 0;
         int col = array[0].length-1;
         while (line >= 0 && line < array.length && col >= 0 && col < array[0].length){
