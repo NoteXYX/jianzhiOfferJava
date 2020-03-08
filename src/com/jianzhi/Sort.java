@@ -25,7 +25,7 @@ public class Sort {
         return index;
     }
     public void quickSortCore(int[] array, int left, int right) {
-        if (left == right || left > right)
+        if (left >= right)
             return;
         if (left < right) {
             int mid = partition(array, left, right);
