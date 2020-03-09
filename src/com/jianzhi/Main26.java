@@ -2,7 +2,7 @@
 package com.jianzhi;
 
 public class Main26 {
-    private class TreeNode {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
