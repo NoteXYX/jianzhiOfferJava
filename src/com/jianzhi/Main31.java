@@ -18,7 +18,6 @@ public class Main31 {
                         break;
                     stack.push(pushed[pushIndex]);
                     pushIndex++;
-
                 }
                 if (stack.peek() != popped[popIndex])
                     break;

@@ -30,7 +30,7 @@ public class Main26 {
             return true;
         if (A == null)
             return false;
-        if (!(A.val == B.val))
+        if (A.val != B.val)
             return false;
         return hasSubTree(A.left, B.left) && hasSubTree(A.right, B.right);
     }

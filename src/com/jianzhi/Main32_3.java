@@ -1,6 +1,5 @@
 //之字形打印二叉树
 package com.jianzhi;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -22,7 +21,7 @@ public class Main32_3 {
         int needPrintLine = 1;
         while (stack1.size()!=0 || stack2.size()!=0) {
             List<Integer> tmp = new ArrayList<>();
-            if ((needPrintLine & 1) == 1) { //若为奇数行
+            if ((needPrintLine & 1) == 1) { //若当前打印的为奇数行
                 while (stack1.size() > 0) {
                     TreeNode node = stack1.pop();
                     tmp.add(node.val);
@@ -32,7 +31,7 @@ public class Main32_3 {
                         stack2.push(node.right);
                 }
             }
-            else {  //若为偶数行
+            else {  //若当前打印的为偶数行
                 while (stack2.size() > 0) {
                     TreeNode node = stack2.pop();
                     tmp.add(node.val);
