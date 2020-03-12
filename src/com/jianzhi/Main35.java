@@ -77,6 +77,5 @@ public class Main35 {
         head4.random = head0;
         Node node = m.copyRandomList(head0);
         System.out.println();
-
     }
 }
