@@ -11,24 +11,25 @@ public class Main37 {
         TreeNode right;
         TreeNode(int x) { val = x; }
   }
+    // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        ArrayList<String> res = new ArrayList<>();
-        if (root == null)
-            return res.toString();
+        if(root == null)return "[]";
+        String res = "[";
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        TreeNode node = null;
-        while (!queue.isEmpty()) {
-            node = queue.poll();
-            if (node != null) {
-                res.add(Integer.toString(node.val));
-                queue.offer(node.left);
-                queue.offer(node.right);
+        while(!queue.isEmpty()){
+            TreeNode cur = queue.poll();
+            if(cur!=null){
+                res+=cur.val+",";
+                queue.offer(cur.left);
+                queue.offer(cur.right);
+            }else{
+                res+="null,";
             }
-            else
-                res.add("null");
         }
-        return res.toString();
+        //去除最后的一个,
+        res = res.substring(0,res.length()-1);
+        return res+="]";
     }
 
     // Decodes your encoded data to tree.

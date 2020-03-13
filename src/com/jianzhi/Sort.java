@@ -7,7 +7,7 @@ public class Sort {
         int tmp = array[j];
         array[j] = array[i];
         array[i] = tmp;
-    }
+}
     public int partition(int[] array, int left, int right) {
         int index = (int)(Math.random() * (right-left+1) + left);
         swap(array, index, right);

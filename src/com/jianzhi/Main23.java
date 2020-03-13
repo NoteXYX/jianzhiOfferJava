@@ -1,5 +1,6 @@
 //反转链表
 package com.jianzhi;
+
 public class Main23 {
     private static class ListNode {
         int val;
@@ -14,7 +15,7 @@ public class Main23 {
             p.next = cur;
         }
     }
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList(ListNode head) {    //非递归版
         if (head==null || head.next==null)
             return head;
         ListNode preNode = head;
@@ -30,12 +31,22 @@ public class Main23 {
         }
         return curNode;
     }
+    public ListNode curReverseList(ListNode head) { //递归版
+        if(head==null || head.next==null) {
+            return head;
+        }
+        ListNode cur = curReverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return cur;
+    }
     public static void main(String[] args) {
         Main23 m = new Main23();
         ListNode head = new ListNode(1);
         head.create(head, 2);
         head.create(head, 3);
         head.create(head, 4);
-        m.reverseList(head);
+//        m.reverseList(head);
+        m.curReverseList(head);
     }
 }
