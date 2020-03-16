@@ -3,7 +3,6 @@ package com.jianzhi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Main40 {
@@ -55,7 +54,7 @@ public class Main40 {
         if(k == 0) {
             return new int[0];
         }
-        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> (b - a)); //最大堆
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> (b - a)); //大根堆
         for(int i: arr) {
             if(queue.size() < k) {
                 queue.offer(i);
