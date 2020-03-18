@@ -1,11 +1,9 @@
 //最长不含重复字符的子字符串
 package com.jianzhi;
-
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Main48 {
-    public int lengthOfLongestSubstring(String s) { //dp[i] = dp[i-1] + 1
+    public int lengthOfLongestSubstring(String s) {
         if (s==null || s.length()==0)
             return 0;
         HashMap<Character, Integer> map = new HashMap<>();
