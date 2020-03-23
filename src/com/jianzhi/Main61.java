@@ -1,5 +1,5 @@
+//扑克牌中的顺子
 package com.jianzhi;
-
 import java.util.Arrays;
 
 public class Main61 {
