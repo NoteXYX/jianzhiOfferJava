@@ -25,11 +25,11 @@ public class Sort {
         return index;
     }
     public void quickSortCore(int[] array, int left, int right) {
-        if (left >= right)
-            return;
-        int mid = partition(array, left, right);
-        quickSortCore(array, left, mid-1);
-        quickSortCore(array, mid+1, right);
+        if (left < right) {
+            int mid = partition(array, left, right);
+            quickSortCore(array, left, mid-1);
+            quickSortCore(array, mid+1, right);
+        }
     }
     /****************************************************************************************************/
 
