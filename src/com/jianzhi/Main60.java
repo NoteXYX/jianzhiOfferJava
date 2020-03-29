@@ -1,25 +1,28 @@
+//n个骰子的点数
 package com.jianzhi;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main60 {
-//    public String convertToBase7(int num) {
-//        ArrayList<Integer> arr = new ArrayList<>();
-//        while (num > 0) {
-//            arr.add(0, num % 7);
-//            num /= 7;
-//        }
-//        for (int s:arr) {
-//            res += s;
-//        }
-//        return res;
-//     }
+    public double[] twoSum(int n) {
+        int[][] dp = new int[n+1][6*n+1];
+        for (int i = 1; i <= 6; i++)
+            dp[1][i] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = i; j <= 6*i; j++) {
+                for (int k = 1; k <= 6; k++) {
+                    if (j-k < i-1)
+                        break;;
+                    dp[i][j] += dp[i-1][j-k];
+                }
+            }
+        }
+        double total = Math.pow(6, n);
+        double[] res = new double[5 * n + 1];
+        for (int i = n; i <= 6*n; i++) {
+            res[i-n] = dp[n][i] / total;
+        }
+        return res;
+    }
     public static void main(String[] args) {
         Main60 m = new Main60();
-
-//        System.out.println(m.convertToBase7(100));
     }
 }
