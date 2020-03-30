@@ -2,9 +2,23 @@ package com.jianzhi;
 
 public class Main {
     public static void main(String[] args) {
-        Integer a = 100;
-        Integer b = 100;
-        Integer c = 1000;
-        System.out.println(a==b);
+        System.out.println("main start...");
+        Thread t = new Thread() {
+            public void run() {
+                System.out.println("thread run...");
+                try {
+                    Thread.sleep(10);
+                    if(isInterrupted())
+                        return;
+                } catch (InterruptedException e) {}
+                System.out.println("thread end.");
+            }
+        };
+        t.start();
+        t.interrupt();
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {}
+        System.out.println("main end...");
     }
 }
