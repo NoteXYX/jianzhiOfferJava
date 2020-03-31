@@ -1,27 +1,8 @@
 package com.jianzhi;
 
-class Pen{
-    private String pen="笔";
-
-    public String getPen() {
-        return pen;
-    }
-}
-class Book{
-    private String book="本";
-
-    public String getBook() {
-        return book;
-    }
-}
-
-
 public class DeadLock {
-//    private static Pen pen=new Pen();
-//    private static Book book=new Book();
     Object a = new Object();
     Object b = new Object();
-
     public static void main(String[] args) {
         DeadLock lock=new DeadLock();
         lock.deadLock();
@@ -57,12 +38,6 @@ public class DeadLock {
                         System.out.println("我有本，也有笔");
                     }
                 }
-            }
-        });
-        Thread t3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
             }
         });
         thread1.start();

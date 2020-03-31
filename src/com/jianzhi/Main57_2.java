@@ -1,8 +1,6 @@
 //和为s的连续正数序列
 package com.jianzhi;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main57_2 {
     public int[][] findContinuousSequence(int target) {
