@@ -10,7 +10,7 @@ public class Main60 {
             for (int j = i; j <= 6*i; j++) {
                 for (int k = 1; k <= 6; k++) {
                     if (j-k < i-1)
-                        break;;
+                        break;
                     dp[i][j] += dp[i-1][j-k];
                 }
             }

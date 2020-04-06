@@ -1,16 +1,23 @@
 package com.jianzhi;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
-    public static void f() {
-        f();
-    }
-    public static void main(String[] args) {
-        ArrayList<int[]> list = new ArrayList<>();
-        while (true) {
-            list.add(new int[2000000000]);
+    public static void main(String[] args) throws IOException {
+//        Writer writer = new FileWriter("log.txt",true); // 参数二，是否追加文件，true=追加
+//        writer.append("老王，你好\n");
+//        writer.close();
+        Reader reader = new FileReader("log.txt");
+        BufferedReader bufferedReader = new BufferedReader(reader);
+        StringBuffer bf = new StringBuffer();
+        String str;
+        while ((str = bufferedReader.readLine()) != null) {
+            bf.append(str + "\n");
         }
+        bufferedReader.close();
+        reader.close();
+        System.out.println(bf.toString());
     }
 //    public static void main(String[] args) {
 //        System.out.println("main start...");
