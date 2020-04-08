@@ -15,7 +15,20 @@ public class Main23 {
             p.next = cur;
         }
     }
-    public ListNode reverseList(ListNode head) {    //非递归版
+    public ListNode rereverseList0(ListNode head) { //非递归版NEW
+        if (head==null || head.next==null)
+            return head;
+        ListNode tmp = new ListNode(-1);
+        ListNode next;
+        while (head != null) {
+            next = head.next;
+            head.next = tmp.next;
+            tmp.next = head;
+            head = next;
+        }
+        return tmp.next;
+    }
+    public ListNode reverseList(ListNode head) {    //非递归版old
         if (head==null || head.next==null)
             return head;
         ListNode preNode = head;
@@ -47,6 +60,6 @@ public class Main23 {
         head.create(head, 3);
         head.create(head, 4);
 //        m.reverseList(head);
-        m.curReverseList(head);
+        head = m.rereverseList0(head);
     }
 }
