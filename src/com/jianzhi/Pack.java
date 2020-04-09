@@ -6,10 +6,11 @@ public class Pack {
         int[] v = {12, 10, 20, 15};
         Pack01 pack01 = new Pack01();
         System.out.println(pack01.knapSack(w, v, 5));
+        System.out.println(pack01.youhua(w, v, 5));
     }
 }
 class Pack01 {
-    public static int knapSack(int[] w, int[] v, int cap) {
+    public int knapSack(int[] w, int[] v, int cap) { //未优化
         int num = w.length;
         if (num == 0 || cap == 0)
             return 0;
@@ -25,5 +26,15 @@ class Pack01 {
             }
         }
         return dp[num-1][cap];
+    }
+    public int youhua(int[] w, int[] v, int cap) {  //优化后
+        int num = w.length;
+        int[] dp = new int[cap+1];
+        for (int i = 0; i < num; i++) {
+            for (int j = cap; j >= w[i]; j--) {    //从最后一个背包开始装
+                dp[j] = Math.max(dp[j], dp[j-w[i]] + v[i]);
+            }
+        }
+        return dp[cap];
     }
 }
