@@ -50,7 +50,6 @@ class Packwq {
                 for(int k=0; k * w[i] <= j; k++)
                     dp[i+1][j]=Math.max(dp[i+1][j],dp[i][j - k * w[i]] + k * v[i]);
             }
-
         }
         return dp[v.length][cap];
     }
