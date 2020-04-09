@@ -7,6 +7,9 @@ public class Pack {
         Pack01 pack01 = new Pack01();
         System.out.println(pack01.knapSack(w, v, 5));
         System.out.println(pack01.youhua(w, v, 5));
+        Packwq packwq = new Packwq();
+        System.out.println(packwq.wqpack(w, v, 5));
+        System.out.println(packwq.youhua(w, v, 5));
     }
 }
 class Pack01 {
@@ -32,6 +35,30 @@ class Pack01 {
         int[] dp = new int[cap+1];
         for (int i = 0; i < num; i++) {
             for (int j = cap; j >= w[i]; j--) {    //从最后一个背包开始装
+                dp[j] = Math.max(dp[j], dp[j-w[i]] + v[i]);
+            }
+        }
+        return dp[cap];
+    }
+}
+class Packwq {
+    public int wqpack(int[] w, int[] v, int cap) {
+        //dp[i][j] = max{dp[i-1][t - w[i] * k] + v[i] * k}; （0 <= k * w[i] <= j）
+        int[][] dp = new int[v.length+1][cap+1];
+        for(int i = 0; i < v.length; i++) {
+            for(int j = 0; j <= cap; j++) {
+                for(int k=0; k * w[i] <= j; k++)
+                    dp[i+1][j]=Math.max(dp[i+1][j],dp[i][j - k * w[i]] + k * v[i]);
+            }
+
+        }
+        return dp[v.length][cap];
+    }
+    public int youhua(int[] w, int[] v, int cap) {
+        //dp[j] = max(dp[j], dp[j-w[i]]+v[i])
+        int[] dp = new int[cap+1];
+        for (int i = 0; i < v.length; i++) {
+            for (int j = w[i]; j <= cap; j++) {
                 dp[j] = Math.max(dp[j], dp[j-w[i]] + v[i]);
             }
         }
