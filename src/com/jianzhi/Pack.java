@@ -53,7 +53,7 @@ class Packwq {
         }
         return dp[v.length][cap];
     }
-    public int youhua(int[] w, int[] v, int cap) {
+    public int youhua(int[] w, int[] v, int cap) {  //优化后的算法
         //dp[j] = max(dp[j], dp[j-w[i]]+v[i])
         int[] dp = new int[cap+1];
         for (int i = 0; i < v.length; i++) {
