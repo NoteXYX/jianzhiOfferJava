@@ -1,5 +1,6 @@
 //矩阵中的路径
 package com.jianzhi;
+
 public class Main12 {
     public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
         int[] visited = new int [rows * cols];
@@ -31,6 +32,40 @@ public class Main12 {
             }
         }
         return hasC;
+    }
+
+    public boolean exist(char[][] board, String word) {
+        int rows = board.length;
+        int cols = board[0].length;
+        int[][] visited = new int[rows][cols];
+        int pathLen = 0;
+        boolean res = false;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                res = existCore(board, word, i, rows, j, cols, visited, pathLen);
+                if (res)
+                    return true;
+            }
+        }
+        return res;
+    }
+    public boolean existCore(char[][] board, String word, int row, int rows, int col, int cols, int[][] visited, int pathLen) {
+        if (pathLen == word.length())
+            return true;
+        boolean res = false;
+        if (row>=0 && row<rows && col>=0 && col<cols && visited[row][col]==0 && board[row][col]==word.charAt(pathLen)) {
+            visited[row][col] = 1;
+            pathLen++;
+            res = existCore(board, word, row-1, rows, col, cols, visited, pathLen) ||
+                  existCore(board, word, row+1, rows, col, cols, visited, pathLen) ||
+                  existCore(board, word, row, rows, col-1, cols, visited, pathLen) ||
+                  existCore(board, word, row, rows, col+1, cols, visited, pathLen);
+            if (!res) {
+                visited[row][col] = 0;
+                pathLen--;
+            }
+        }
+        return res;
     }
     public static void main(String[] args) {
         Main12 m = new Main12();
