@@ -1,12 +1,12 @@
 //根据前序和中序遍历重建二叉树
 package com.jianzhi;
- /* public class TreeNode {
-       int val;
-       TreeNode left;
-       TreeNode right;
-       TreeNode(int x) { val = x; }
-  } */
 public class Main4 {
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
     public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
         if (pre==null || pre.length==0) {
             return null;
