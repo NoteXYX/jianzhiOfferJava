@@ -1,5 +1,4 @@
 package com.jianzhi;
-
 public class ListNode {
     int val;
     ListNode next = null;
